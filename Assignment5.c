@@ -1,40 +1,50 @@
 #include <stdio.h>
+#include <string.h>
 
 int main()
 {
-    int a[10][10], b[10][10], sum[10][10];
-    int i, j, r, c;
+    char str1[100], str2[100];
+    int choice;
 
-    printf("Enter number of rows and columns: ");
-    scanf("%d %d", &r, &c);
+    printf("Enter first string: ");
+    scanf("%s", str1);
 
-    printf("Enter elements of first matrix:\n");
-    for(i = 0; i < r; i++)
+    printf("Enter second string: ");
+    scanf("%s", str2);
+
+    printf("\n1. Length of string");
+    printf("\n2. Copy string");
+    printf("\n3. Concatenate strings");
+    printf("\n4. Compare strings");
+
+    printf("\nEnter your choice: ");
+    scanf("%d", &choice);
+
+    switch(choice)
     {
-        for(j = 0; j < c; j++)
-        {
-            scanf("%d", &a[i][j]);
-        }
-    }
+        case 1:
+            printf("Length = %lu", strlen(str1));
+            break;
 
-    printf("Enter elements of second matrix:\n");
-    for(i = 0; i < r; i++)
-    {
-        for(j = 0; j < c; j++)
-        {
-            scanf("%d", &b[i][j]);
-        }
-    }
+        case 2:
+            strcpy(str1, str2);
+            printf("Copied string = %s", str1);
+            break;
 
-    printf("Sum of two matrices:\n");
-    for(i = 0; i < r; i++)
-    {
-        for(j = 0; j < c; j++)
-        {
-            sum[i][j] = a[i][j] + b[i][j];
-            printf("%d ", sum[i][j]);
-        }
-        printf("\n");
+        case 3:
+            strcat(str1, str2);
+            printf("Concatenated string = %s", str1);
+            break;
+
+        case 4:
+            if(strcmp(str1, str2) == 0)
+                printf("Strings are equal");
+            else
+                printf("Strings are not equal");
+            break;
+
+        default:
+            printf("Invalid choice");
     }
 
     return 0;
